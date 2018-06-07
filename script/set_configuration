@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+psql --username=admin -c "ALTER SYSTEM  SET timezone TO 'Europe/Paris';"
+psql --username=admin -c "SELECT pg_reload_conf();"
+psql --username=admin -c "SELECT CURRENT_TIME"

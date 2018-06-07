@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+psql --username=viewer shows -c 'SELECT * FROM users LIMIT 1;'
+psql --username=viewer shows -c 'INSERT INTO users(user_id,registration_date,firstname,lastname,email,password) VALUES (66666666,"WESH",lol,nick,nicklol@trololo.com,pouet42);'

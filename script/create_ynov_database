@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+psql --username=admin shows -c 'DROP TABLE students CASCADE'
+psql --username=admin shows -c 'DROP TABLE classes CASCADE'
+psql --username=admin shows -c 'DROP TABLE notes CASCADE'
+psql --username=admin -c 'DROP DATABASE YNOV'
+
+psql --username=admin -c 'CREATE DATABASE YNOV'
+psql --username=admin shows -f  ./sql/create_students.sql
+psql --username=admin shows -f  ./sql/create_classes.sql
+psql --username=admin shows -f  ./sql/create_notes.sql
+
+psql --username=admin YNOV -f ./sql/create_view_students.sql

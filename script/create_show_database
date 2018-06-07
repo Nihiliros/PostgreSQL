@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+-- Activate the extension who allows password encryption
+psql --username=admin shows -c 'CREATE EXTENSION pgcrypto'
+
+-- Drop all tables and database for re-use this script again
+psql --username=admin shows -c 'DROP TABLE user_follow_show'
+psql --username=admin shows -c 'DROP TABLE user_rate_show'
+psql --username=admin shows -c 'DROP TABLE user_watch_episode'
+psql --username=admin shows -c 'DROP TABLE episode CASCADE'
+psql --username=admin shows -c 'DROP TABLE show CASCADE'
+psql --username=admin shows -c 'DROP TABLE users CASCADE'
+psql --username=admin -c 'DROP DATABASE shows'
+
+-- Create the database and the associates tables
+psql --username=admin -c 'CREATE DATABASE shows'
+psql --username=admin shows -f  ./sql/create_user.sql
+psql --username=admin shows -f  ./sql/create_episode.sql
+psql --username=admin shows -f  ./sql/create_show.sql
+psql --username=admin shows -f  ./sql/create_follow.sql
+psql --username=admin shows -f  ./sql/create_rate.sql
+psql --username=admin shows -f  ./sql/create_watch.sql

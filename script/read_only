@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+-- launch the script of creation of a role "read_only"
+psql --username=admin -f ./sql/create_read_only.sql

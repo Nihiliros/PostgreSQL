@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+bash ./create_show_database
+bash ./load_show_data
+bash ./read_only
+bash ./crypt_password

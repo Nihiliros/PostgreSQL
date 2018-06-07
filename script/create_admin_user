@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+sudo -u postgres psql -c "DROP DATABASE admin;"
+sudo -u postgres psql -c "DROP ROLE admin;"
+
+echo "connexion avec l utilisateur postgres"
+sudo -u postgres psql -c "CREATE ROLE admin LOGIN ENCRYPTED PASSWORD 'admin42' SUPERUSER;"
+sudo -u postgres psql -c "CREATE DATABASE admin WITH OWNER = admin;"
+psql --username=admin
+

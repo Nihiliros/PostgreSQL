@@ -1,0 +1,12 @@
+#!/bin/bash
+
+-- Delete all data in the listed tables of the database shows
+psql --username=admin -d shows -c 'TRUNCATE users CASCADE'
+psql --username=admin -d shows -c 'TRUNCATE show CASCADE'
+psql --username=admin -d shows -c 'TRUNCATE episode CASCADE'
+psql --username=admin -d shows -c 'TRUNCATE user_follow_show CASCADE'
+psql --username=admin -d shows -c 'TRUNCATE user_rate_show CASCADE'
+psql --username=admin -d shows -c 'TRUNCATE user_watch_episode CASCADE'
+
+-- Call a sql script who populate the tables in the database shows
+psql --username=admin -d shows -f ./sql/import_csv.sql
